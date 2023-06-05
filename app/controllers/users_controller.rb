@@ -9,7 +9,11 @@ class UsersController < ApplicationController
     @user["last_name"] = params["user"]["last_name"]
     @user["email"] = params["user"]["email"]
     @user["password"] = params["user"]["password"]
-    @user.save
-    redirect_to "/"
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to "/places", notice: 'User created successfully'
+    else
+      render :new
+    end
   end
 end
