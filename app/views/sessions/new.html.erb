@@ -1,15 +1,13 @@
 <h1>Login</h1>
 
-<%= form_with url: '/sessions', method: 'post' do |form| %>
-  <p>
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </p>
-  <p>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </p>
-  <p>
-    <%= form.submit 'Login' %>
-  </p>
+<%= form_with url: sessions_path, class: 'form-signin' do |f| %>
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+  <%= f.label :email, class: 'sr-only' %>
+  <%= f.email_field :email, class: 'form-control', placeholder: 'Email address', required: true, autofocus: true %>
+
+  <%= f.label :password, class: 'sr-only' %>
+  <%= f.password_field :password, class: 'form-control', placeholder: 'Password', required: true %>
+
+  <%= f.submit 'Sign in', class: 'btn btn-lg btn-primary btn-block' %>
 <% end %>
