@@ -2,7 +2,7 @@ class PlacesController < ApplicationController
   before_action :require_login
 
   def index
-    @places = current_user.places
+    @places = @current_user.places
   end  
 
   def show
@@ -15,15 +15,22 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.new
-    @place["name"] = params["place"]["name"]
-    @place.save
-    redirect_to "/places"
+    @place = @current_user.places.new(place_params)
+    if @place.save
+      redirect_to "/places"
+    else
+      render :new
+    end
   end
-
+  
   private
+  
+  def place_params
+    params.require(:place).permit(:name)
+  end
+  
   def require_login
-    unless current_user
+    unless @current_user
       redirect_to login_path
     end  
   end

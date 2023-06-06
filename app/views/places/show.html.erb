@@ -6,7 +6,7 @@
     <% @posts.each do |post| %>
       <div class="col-4">
         <div class="card mb-4 shadow-sm">
-          <img class="card-img-top" src="<%= post.image.attached? ? url_for(post.image) : "https://via.placeholder.com/150" %>" alt="Card image cap">
+          <img class="card-img-top" src="<%= post.image.attached? ? url_for(post.image) : "No Picture" %>" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title"><%= post["title"] %></h5>
             <h6><%= post["posted_on"] %></h6>
