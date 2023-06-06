@@ -1,0 +1,34 @@
+body {
+  background: #fafafa;
+  color: #262626;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #003569;
+}
+
+.navbar {
+  border-bottom: 1px solid #efefef;
+  background: #ffffff;
+  height: 54px;
+  padding: 0 16px;
+}
+
+.navbar-brand {
+  font-size: 22px;
+  font-family: "Billabong", "Brush Script MT", "Mistral", cursive;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
+
+.card {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 60px;
+  padding: 16px;
+}

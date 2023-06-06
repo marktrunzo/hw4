@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   before_action :require_login
 
+  def index
+    @posts = current_user.posts
+  end
+  
   def new
     @post = Post.new
     @post.place_id = params["place_id"]
@@ -17,6 +21,10 @@ class PostsController < ApplicationController
     redirect_to "/places/#{@post["place_id"]}"
   end  
 
+  def post_params
+    params.require(:post).permit(:title, :description, :posted_on, :image)
+  end
+  
   private
     def require_login
       unless current_user

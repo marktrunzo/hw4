@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="/stylesheets/application.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
   <body>
@@ -17,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">Home</a>
+      <a class="navbar-brand" href="/places">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -26,7 +25,12 @@
         <ul class="navbar-nav mr-auto">
           <% if @current_user %>
             <li class="nav-item">
-              <a class="nav-link" href="<%= logout_path %>" data-method="delete">Logout</a>
+              <strong style="color: green;">Welcome, <%= @current_user.username %></strong>
+            </li>
+            <li class="nav-item">
+              <%= form_tag logout_path, method: :delete, class: 'nav-link' do %>
+                <%= submit_tag 'Logout', class: 'btn btn-link', style: 'padding: 0; text-decoration: none;' %>
+              <% end %>
             </li>
           <% else %>
             <li class="nav-item">

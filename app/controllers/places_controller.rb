@@ -2,8 +2,8 @@ class PlacesController < ApplicationController
   before_action :require_login
 
   def index
-    @places = Place.all
-  end
+    @places = current_user.places
+  end  
 
   def show
     @place = Place.find_by({ "id" => params["id"] })
@@ -24,7 +24,7 @@ class PlacesController < ApplicationController
   private
   def require_login
     unless current_user
-      redirect_to new_session_path
-    end
+      redirect_to login_path
+    end  
   end
 end

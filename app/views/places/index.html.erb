@@ -1,11 +1,15 @@
-<h1>Places</h1>
-
-<ul>
-  <% for place in @places %>
-    <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
+<div class="row">
+  <% @places.each do |place| %>
+    <div class="col-sm-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title"><%= place["name"] %></h5>
+          <%= link_to 'Show', place, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
-
+</div>
 <p>
   <a href="/places/new">New place</a>
 </p>
